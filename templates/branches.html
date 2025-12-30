@@ -101,152 +101,183 @@
             transform: scale(1.2);
         }
 
-        /* Main Header */
-        .main-header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 20px 0;
-            position: sticky;
+        /* --- PREMIUM HEADER & HERO DESIGN (Ported) --- */
+
+        /* 1. Premium Navbar */
+        .premium-navbar {
+            position: fixed;
             top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            align-items: center;
-            padding: 0 20px;
-            gap: 40px;
-        }
-
-        .commission-seal {
-            justify-self: end;
-        }
-
-        .seal-logo {
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .seal-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .seal-logo img {
+            left: 0;
             width: 100%;
-            height: 100%;
-            object-fit: contain;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
         }
 
-        .main-logo-section {
-            justify-self: center;
-            text-align: center;
+        .premium-navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
-        .ssha-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100px;
-        }
-
-        .ssha-logo img {
-            max-height: 100px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .header-spacer {
-            justify-self: end;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            background: var(--light-bg);
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 0;
-        }
-
-        .nav-content-main {
+        .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
 
-        .main-nav {
+        .nav-logo-wrapper {
             display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo-img {
+            height: 60px;
+            width: auto;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
+            /* Start white on dark hero */
+        }
+
+        .premium-navbar.scrolled .nav-logo-img {
+            height: 50px;
+            filter: none;
+            /* Return to color on white bg */
+        }
+
+        .nav-links-modern {
+            display: flex;
+            gap: 40px;
             list-style: none;
-            gap: 35px;
             margin: 0;
             padding: 0;
         }
 
-        .main-nav li {
-            margin: 0;
-        }
-
-        .main-nav a {
+        .nav-links-modern a {
+            color: white;
             text-decoration: none;
-            color: var(--primary-gray);
             font-weight: 500;
-            font-size: 1rem;
-            padding: 15px 0;
+            font-size: 1.05rem;
             position: relative;
+            padding: 5px 0;
             transition: all 0.3s ease;
-            display: block;
         }
 
-        .main-nav a:hover {
-            color: var(--primary-green);
+        .premium-navbar.scrolled .nav-links-modern a {
+            color: var(--deep-blue);
         }
 
-        .main-nav a::after {
+        .nav-links-modern a::after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 0;
+            /* Arabic RTL */
             width: 0;
-            height: 3px;
-            background: var(--gradient-primary);
+            height: 2px;
+            background: var(--primary-green);
             transition: width 0.3s ease;
         }
 
-        .main-nav a:hover::after {
+        .nav-links-modern a:hover::after {
             width: 100%;
         }
 
-        .lang-switch {
-            background: var(--gradient-secondary);
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-glass-nav {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-glass-nav:hover {
+            background: white;
+            color: var(--deep-blue);
+            transform: translateY(-2px);
+        }
+
+        .premium-navbar.scrolled .btn-glass-nav {
+            background: var(--gradient-secondary);
+            border-color: transparent;
+            color: white;
+        }
+
+        .premium-navbar.scrolled .btn-glass-nav:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .lang-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 0.9rem;
         }
 
-        .lang-switch:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+        .premium-navbar.scrolled .lang-toggle {
+            color: var(--deep-blue);
+        }
+
+        @media (max-width: 900px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .nav-links-modern {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+
+            .nav-links-modern.active {
+                display: flex;
+            }
+
+            .nav-links-modern a {
+                color: var(--deep-blue);
+                font-size: 1.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+                cursor: pointer;
+                color: white;
+                font-size: 1.5rem;
+            }
+
+            .premium-navbar.scrolled .mobile-menu-btn {
+                color: var(--deep-blue);
+            }
         }
 
         .hero-section {
             height: 100dvh;
-            /* يدعم الشاشات الحديثة بدل 100vh */
             position: relative;
             overflow: hidden;
             display: flex;
@@ -1893,165 +1924,239 @@
             z-index: 10;
         }
 
-        /* --- BRANCHES GRID --- */
-        .branches-section {
-            background: white;
-            border-radius: 30px;
-            padding: 50px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            margin-bottom: 60px;
+        /* --- PREMIUM BRANCHES & CLUBS DESIGN --- */
+
+        .branches-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 20px;
         }
 
         .section-header-internal {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            position: relative;
         }
 
         .section-header-internal h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 2.5rem;
             color: var(--deep-blue);
+            font-weight: 800;
             margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
         }
 
-        .section-header-internal .subtitle {
+        .section-header-internal h2::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background: var(--gradient-primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .subtitle {
             font-size: 1.1rem;
-            color: var(--primary-gray);
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
+        /* 1. Premium City Cards */
         .cities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 100px;
         }
 
         .city-card {
-            background: #F9FAFB;
-            border: 1px solid #E5E7EB;
+            background: white;
             border-radius: 20px;
-            padding: 25px 20px;
+            padding: 30px 20px;
             text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
-        }
-
-        .city-card:hover {
-            transform: translateY(-5px);
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary-green);
-        }
-
-        .city-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            background: linear-gradient(135deg, var(--primary-green), #81C784);
-            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 8px 20px rgba(94, 162, 98, 0.2);
-            transition: transform 0.3s ease;
+            gap: 20px;
+            cursor: pointer;
         }
 
-        .city-card:hover .city-icon {
-            transform: scale(1.1) rotate(10deg);
-        }
-
-        .city-name {
-            font-weight: 700;
-            color: var(--deep-blue);
-            font-size: 1.1rem;
-        }
-
-        /* --- CLUBS GRID --- */
-        .clubs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .club-card {
-            background: linear-gradient(145deg, #ffffff, #f0f0f0);
-            border-radius: 25px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            position: relative;
-        }
-
-        .club-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-        }
-
-        /* Special Gradients for Clubs */
-        .club-card::before {
+        .city-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 6px;
-            background: var(--gradient-primary);
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 203, 153, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .club-card.volunteering::before {
-            background: linear-gradient(90deg, #FF9800, #F57C00);
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(30, 203, 153, 0.15);
+            border-color: rgba(30, 203, 153, 0.3);
         }
 
-        .club-card.patient::before {
-            background: linear-gradient(90deg, #E91E63, #C2185B);
+        .city-card:hover::before {
+            opacity: 1;
         }
 
-        .club-card.innovation::before {
-            background: linear-gradient(90deg, #2196F3, #1976D2);
-        }
-
-        .club-icon {
+        .city-icon {
             width: 80px;
             height: 80px;
-            margin: 0 auto 25px;
-            border-radius: 20px;
-            background: white;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
             color: var(--primary-green);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
         }
 
-        .club-card.volunteering .club-icon {
-            color: #F57C00;
+        .city-card:hover .city-icon {
+            background: var(--gradient-primary);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(30, 203, 153, 0.3);
         }
 
-        .club-card.patient .club-icon {
-            color: #C2185B;
+        .city-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            z-index: 1;
         }
 
-        .club-card.innovation .club-icon {
-            color: #1976D2;
+        /* 2. Scientific Clubs - Modern Cards */
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .club-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .club-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Club Types & Colors */
+        .club-card.volunteering {
+            --club-color: #FF9800;
+            --club-bg: #FFF3E0;
+        }
+
+        .club-card.patient {
+            --club-color: #E91E63;
+            --club-bg: #FCE4EC;
+        }
+
+        .club-card.innovation {
+            --club-color: #2196F3;
+            --club-bg: #E3F2FD;
+        }
+
+        .club-card.digital {
+            --club-color: #9C27B0;
+            --club-bg: #F3E5F5;
+        }
+
+        .club-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 30px;
+            background: var(--club-bg);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--club-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .club-card:hover .club-icon {
+            transform: scale(1.1);
+            border-radius: 50%;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .club-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            color: var(--primary-gray);
+            color: var(--deep-blue);
             margin-bottom: 15px;
         }
 
         .club-desc {
-            font-size: 0.95rem;
             color: #666;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .club-link {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            background: transparent;
+            border: 2px solid var(--club-color);
+            color: var(--club-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .club-card:hover .club-link {
+            background: var(--club-color);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .cities-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .city-card {
+                padding: 20px 15px;
+            }
+
+            .city-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .city-name {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -2062,58 +2167,36 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Top Header -->
-    <div class="top-header">
-        <div class="top-header-content">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> +966 11 123 4567</span>
-                <span><i class="fas fa-envelope"></i> info@ssha.org.sa</span>
-                <span><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</span>
-            </div>
-            <div class="social-header">
-                <a href="#" title="تويتر"><i class="fab fa-twitter"></i></a>
-                <a href="#" title="لينكد إن"><i class="fab fa-linkedin"></i></a>
-                <a href="#" title="يوتيوب"><i class="fab fa-youtube"></i></a>
-                <a href="#" title="واتساب"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Header -->
-    <header class="main-header" id="mainHeader">
-        <div class="header-content">
-            <div class="header-spacer"></div>
-
-            <div class="main-logo-section">
-                <div class="ssha-logo">
-                    <img src="/assets/Images/logo.svg" alt="">
-                </div>
+    <!-- Premium Navbar -->
+    <nav class="premium-navbar" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo-wrapper">
+                <a href="teast1.html">
+                    <img src="/assets/Images/logo.svg" alt="SSHA" class="nav-logo-img">
+                </a>
             </div>
 
-            <div class="commission-seal">
-                <div class="seal-logo">
-                    <img src="/assets/Images/SCHS-logo.svg" alt="" srcset="">
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-content-main">
-            <ul class="main-nav">
-                <li><a href="teast1.html">الرئيسية</a></li>
+            <ul class="nav-links-modern">
+                <li><a href="teast1.html#home">الرئيسية</a></li>
                 <li><a href="teast1.html#about">عن الجمعية</a></li>
-                <li><a href="branches.html" class="active">الفروع والنوادي</a></li>
+                <li><a href="branches.html">الفروع والنوادي</a></li>
                 <li><a href="teast1.html#news">المركز الإعلامي</a></li>
                 <li><a href="teast1.html#membership">العضوية</a></li>
                 <li><a href="resources.html">اللجان واللوائح</a></li>
                 <li><a href="teast1.html#contact">تواصل معنا</a></li>
             </ul>
-            <a href="teast1.html#membership" class="btn-membership" aria-label="العضويات">العضويات</a>
-            <a href="#" class="lang-switch">ENGLISH</a>
+
+            <div class="nav-actions">
+                <a href="teast1.html#membership" class="btn-glass-nav" aria-label="العضويات">بوابة العضوية</a>
+                <a href="#" class="lang-toggle">English</a>
+                <button class="mobile-menu-btn"
+                    style="display:none; background:none; border:none; color:white; font-size:1.5rem;"><i
+                        class="fas fa-bars"></i></button>
+            </div>
         </div>
     </nav>
+
+    <!-- Spacer for fixed navbar on non-hero pages if needed, but page-hero handles it -->
 
     <!-- Branches & Clubs Hero -->
     <section class="page-hero">
@@ -2202,47 +2285,59 @@
             </div>
         </div>
 
-        <!-- 2. Clubs Section -->
-        <div class="section-header-internal reveal" style="margin-bottom: 40px;">
-            <h2>الأندية العلمية</h2>
-            <div class="subtitle">مجتمعات مهنية متخصصة لتعزيز الابتكار وتبادل الخبرات</div>
+        <!-- 2. Scientific Clubs Section -->
+        <div class="clubs-section reveal">
+            <div class="section-header-internal">
+                <h2>الأندية العلمية</h2>
+                <div class="subtitle">منصات متخصصة لتعزيز المعرفة والابتكار وتبادل الخبرات</div>
+            </div>
+
+            <div class="clubs-grid">
+                <!-- Volunteering Club -->
+                <div class="club-card volunteering">
+                    <div class="club-icon"><i class="fas fa-hands-helping"></i></div>
+                    <div class="club-title">نادي التطوع الصحي</div>
+                    <p class="club-desc">
+                        يهدف لتعزيز ثقافة التطوع وتمكين المتطوعين من المساهمة في المبادرات الصحية المجتمعية
+                    </p>
+                    <a href="#" class="club-link">انضم للنادي</a>
+                </div>
+
+                <!-- Patient Experience Club -->
+                <div class="club-card patient">
+                    <div class="club-icon"><i class="fas fa-user-injured"></i></div>
+                    <div class="club-title">نادي تجربة المريض</div>
+                    <p class="club-desc">
+                        يركز على تحسين رحلة المريض ورفع مستوى الرضا عن الخدمات الصحية المقدمة
+                    </p>
+                    <a href="#" class="club-link">انضم للنادي</a>
+                </div>
+
+                <!-- Innovation Club -->
+                <div class="club-card innovation">
+                    <div class="club-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="club-title">نادي الابتكار الصحي</div>
+                    <p class="club-desc">
+                        حاضنة للأفكار الإبداعية والحلول المبتكرة للتحديات التي تواجه القطاع الصحي
+                    </p>
+                    <a href="#" class="club-link">انضم للنادي</a>
+                </div>
+
+                <!-- Digital Health Club (New) -->
+                <div class="club-card digital">
+                    <div class="club-icon"><i class="fas fa-laptop-medical"></i></div>
+                    <div class="club-title">نادي الصحة الرقمية</div>
+                    <p class="club-desc">
+                        يسعى لتمكين التحول الرقمي وتبني التقنيات الحديثة في إدارة المنظومات الصحية
+                    </p>
+                    <a href="#" class="club-link">انضم للنادي</a>
+                </div>
+            </div>
         </div>
 
-        <div class="clubs-grid reveal">
-            <!-- Leadership Club -->
-            <div class="club-card">
-                <div class="club-icon"><i class="fas fa-chess-king"></i></div>
-                <h3 class="club-title">نادي القيادة الصحية</h3>
-                <p class="club-desc">تطوير القيادات الشابة وتمكينهم من المهارات الإدارية الحديثة لقيادة التحول في القطاع
-                    الصحي.</p>
-            </div>
-
-            <!-- Volunteering Club -->
-            <div class="club-card volunteering">
-                <div class="club-icon"><i class="fas fa-hands-helping"></i></div>
-                <h3 class="club-title">نادي التطوع الإداري الصحي</h3>
-                <p class="club-desc">تعزيز ثقافة التطوع المهني والمساهمة في خدمة المجتمع من خلال الكوادر الإدارية
-                    المتخصصة.</p>
-            </div>
-
-            <!-- Patient Experience Club -->
-            <div class="club-card patient">
-                <div class="club-icon"><i class="fas fa-heartbeat"></i></div>
-                <h3 class="club-title">نادي تجربة المريض</h3>
-                <p class="club-desc">التركيز على تحسين رحلة المريض والارتقاء بجودة الخدمات المقدمة في المنشآت الصحية.
-                </p>
-            </div>
-
-            <!-- Innovation Club -->
-            <div class="club-card innovation">
-                <div class="club-icon"><i class="fas fa-lightbulb"></i></div>
-                <h3 class="club-title">نادي الابتكار الصحي</h3>
-                <p class="club-desc">حاضنة للأفكار الإبداعية والحلول المبتكرة لمواجهة تحديات الإدارة الصحية.</p>
-            </div>
-        </div>
+    </div>
     </div>
 
-    <!-- Footer -->
     <!-- Footer -->
     <footer class="footer-modern-premium" id="contact">
         <div class="footer-pattern"></div>
@@ -2371,15 +2466,13 @@
             });
         });
 
-        // Header Scroll Effect
+        // Premium Navbar Scroll Effect
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('mainHeader');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+            const navbar = document.querySelector('.premium-navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 8px 40px rgba(0,0,0,0.12)';
+                navbar.classList.remove('scrolled');
             }
         });
 
@@ -2638,7 +2731,27 @@
             });
         }
 
-        createMobileMenu();
+        // Mobile Menu Logic
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links-modern');
+
+        if (mobileBtn && navLinks) {
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const isOpen = navLinks.classList.contains('active');
+                mobileBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                mobileBtn.style.color = isOpen ? 'var(--deep-blue)' : '';
+            });
+
+            // Close menu when clicking links
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileBtn.style.color = '';
+                });
+            });
+        }
 
         // Enhanced Card Hover Effects
         document.querySelectorAll('.service-card, .news-card').forEach(card => {

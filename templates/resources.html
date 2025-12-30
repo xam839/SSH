@@ -101,147 +101,179 @@
             transform: scale(1.2);
         }
 
-        /* Main Header */
-        .main-header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 20px 0;
-            position: sticky;
+        /* --- PREMIUM HEADER & HERO DESIGN (Ported) --- */
+
+        /* 1. Premium Navbar */
+        .premium-navbar {
+            position: fixed;
             top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            align-items: center;
-            padding: 0 20px;
-            gap: 40px;
-        }
-
-        .commission-seal {
-            justify-self: end;
-        }
-
-        .seal-logo {
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .seal-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .seal-logo img {
+            left: 0;
             width: 100%;
-            height: 100%;
-            object-fit: contain;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
         }
 
-        .main-logo-section {
-            justify-self: center;
-            text-align: center;
+        .premium-navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
-        .ssha-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100px;
-        }
-
-        .ssha-logo img {
-            max-height: 100px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .header-spacer {
-            justify-self: end;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            background: var(--light-bg);
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 0;
-        }
-
-        .nav-content-main {
+        .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
 
-        .main-nav {
+        .nav-logo-wrapper {
             display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo-img {
+            height: 60px;
+            width: auto;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
+            /* Start white on dark hero */
+        }
+
+        .premium-navbar.scrolled .nav-logo-img {
+            height: 50px;
+            filter: none;
+            /* Return to color on white bg */
+        }
+
+        .nav-links-modern {
+            display: flex;
+            gap: 40px;
             list-style: none;
-            gap: 35px;
             margin: 0;
             padding: 0;
         }
 
-        .main-nav li {
-            margin: 0;
-        }
-
-        .main-nav a {
+        .nav-links-modern a {
+            color: white;
             text-decoration: none;
-            color: var(--primary-gray);
             font-weight: 500;
-            font-size: 1rem;
-            padding: 15px 0;
+            font-size: 1.05rem;
             position: relative;
+            padding: 5px 0;
             transition: all 0.3s ease;
-            display: block;
         }
 
-        .main-nav a:hover {
-            color: var(--primary-green);
+        .premium-navbar.scrolled .nav-links-modern a {
+            color: var(--deep-blue);
         }
 
-        .main-nav a::after {
+        .nav-links-modern a::after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 0;
+            /* Arabic RTL */
             width: 0;
-            height: 3px;
-            background: var(--gradient-primary);
+            height: 2px;
+            background: var(--primary-green);
             transition: width 0.3s ease;
         }
 
-        .main-nav a:hover::after {
+        .nav-links-modern a:hover::after {
             width: 100%;
         }
 
-        .lang-switch {
-            background: var(--gradient-secondary);
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-glass-nav {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-glass-nav:hover {
+            background: white;
+            color: var(--deep-blue);
+            transform: translateY(-2px);
+        }
+
+        .premium-navbar.scrolled .btn-glass-nav {
+            background: var(--gradient-secondary);
+            border-color: transparent;
+            color: white;
+        }
+
+        .premium-navbar.scrolled .btn-glass-nav:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .lang-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 0.9rem;
         }
 
-        .lang-switch:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+        .premium-navbar.scrolled .lang-toggle {
+            color: var(--deep-blue);
+        }
+
+        @media (max-width: 900px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .nav-links-modern {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+
+            .nav-links-modern.active {
+                display: flex;
+            }
+
+            .nav-links-modern a {
+                color: var(--deep-blue);
+                font-size: 1.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+                cursor: pointer;
+                color: white;
+                font-size: 1.5rem;
+            }
+
+            .premium-navbar.scrolled .mobile-menu-btn {
+                color: var(--deep-blue);
+            }
         }
 
         .hero-section {
@@ -1899,57 +1931,36 @@
     </div>
 
     <!-- Top Header -->
-    <div class="top-header">
-        <div class="top-header-content">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> +966 11 123 4567</span>
-                <span><i class="fas fa-envelope"></i> info@ssha.org.sa</span>
-                <span><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</span>
-            </div>
-            <div class="social-header">
-                <a href="#" title="تويتر"><i class="fab fa-twitter"></i></a>
-                <a href="#" title="لينكد إن"><i class="fab fa-linkedin"></i></a>
-                <a href="#" title="يوتيوب"><i class="fab fa-youtube"></i></a>
-                <a href="#" title="واتساب"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Header -->
-    <header class="main-header" id="mainHeader">
-        <div class="header-content">
-            <div class="header-spacer"></div>
-
-            <div class="main-logo-section">
-                <div class="ssha-logo">
-                    <img src="/assets/Images/logo.svg" alt="">
-                </div>
+    <!-- Premium Navbar -->
+    <nav class="premium-navbar" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo-wrapper">
+                <a href="teast1.html">
+                    <img src="/assets/Images/logo.svg" alt="SSHA" class="nav-logo-img">
+                </a>
             </div>
 
-            <div class="commission-seal">
-                <div class="seal-logo">
-                    <img src="/assets/Images/SCHS-logo.svg" alt="" srcset="">
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-content-main">
-            <ul class="main-nav">
-                <li><a href="teast1.html">الرئيسية</a></li>
+            <ul class="nav-links-modern">
+                <li><a href="teast1.html#home">الرئيسية</a></li>
                 <li><a href="teast1.html#about">عن الجمعية</a></li>
                 <li><a href="branches.html">الفروع والنوادي</a></li>
                 <li><a href="teast1.html#news">المركز الإعلامي</a></li>
                 <li><a href="teast1.html#membership">العضوية</a></li>
-                <li><a href="resources.html" class="active">اللجان واللوائح</a></li>
+                <li><a href="resources.html">اللجان واللوائح</a></li>
                 <li><a href="teast1.html#contact">تواصل معنا</a></li>
             </ul>
-            <a href="teast1.html#membership" class="btn-membership" aria-label="العضويات">العضويات</a>
-            <a href="#" class="lang-switch">ENGLISH</a>
+
+            <div class="nav-actions">
+                <a href="teast1.html#membership" class="btn-glass-nav" aria-label="العضويات">بوابة العضوية</a>
+                <a href="#" class="lang-toggle">English</a>
+                <button class="mobile-menu-btn"
+                    style="display:none; background:none; border:none; color:white; font-size:1.5rem;"><i
+                        class="fas fa-bars"></i></button>
+            </div>
         </div>
     </nav>
+
+    <!-- Spacer for fixed navbar on non-hero pages if needed, but page-hero handles it -->
 
     <!-- Resources Page Hero -->
     <section class="page-hero">
@@ -2243,15 +2254,13 @@
             });
         });
 
-        // Header Scroll Effect
+        // Premium Navbar Scroll Effect
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('mainHeader');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+            const navbar = document.querySelector('.premium-navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 8px 40px rgba(0,0,0,0.12)';
+                navbar.classList.remove('scrolled');
             }
         });
 
@@ -2510,7 +2519,27 @@
             });
         }
 
-        createMobileMenu();
+        // Mobile Menu Logic
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links-modern');
+
+        if (mobileBtn && navLinks) {
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const isOpen = navLinks.classList.contains('active');
+                mobileBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                mobileBtn.style.color = isOpen ? 'var(--deep-blue)' : '';
+            });
+
+            // Close menu when clicking links
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileBtn.style.color = '';
+                });
+            });
+        }
 
         // Enhanced Card Hover Effects
         document.querySelectorAll('.service-card, .news-card').forEach(card => {

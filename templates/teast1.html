@@ -57,397 +57,344 @@
             background: var(--primary-blue);
         }
 
-        /* Header */
-        .top-header {
-            background: var(--deep-blue);
-            color: white;
-            padding: 8px 0;
-            font-size: 0.9rem;
+        /* --- PREMIUM HEADER & HERO DESIGN --- */
+
+        /* 1. Premium Navbar */
+        .premium-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
         }
 
-        .top-header-content {
+        .premium-navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
 
-        .contact-info {
-            display: flex;
-            gap: 30px;
-        }
-
-        .contact-info span {
+        .nav-logo-wrapper {
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .social-header {
-            display: flex;
             gap: 15px;
         }
 
-        .social-header a {
-            color: white;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-header a:hover {
-            color: var(--primary-orange);
-            transform: scale(1.2);
-        }
-
-        /* Main Header */
-        .main-header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            align-items: center;
-            padding: 0 20px;
-            gap: 40px;
-        }
-
-        .commission-seal {
-            justify-self: end;
-        }
-
-        .seal-logo {
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .seal-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .seal-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .main-logo-section {
-            justify-self: center;
-            text-align: center;
-        }
-
-        .ssha-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100px;
-        }
-
-        .ssha-logo img {
-            max-height: 100px;
+        .nav-logo-img {
+            height: 60px;
             width: auto;
-            object-fit: contain;
-        }
-
-        .header-spacer {
-            justify-self: end;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            background: var(--light-bg);
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 0;
-        }
-
-        .nav-content-main {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .main-nav {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .main-nav li {
-            margin: 0;
-        }
-
-        .main-nav a {
-            text-decoration: none;
-            color: var(--primary-gray);
-            font-weight: 500;
-            font-size: 1rem;
-            padding: 15px 0;
-            position: relative;
             transition: all 0.3s ease;
-            display: block;
+            filter: brightness(0) invert(1);
+            /* Start white on dark hero */
         }
 
-        .main-nav a:hover {
-            color: var(--primary-green);
+        .premium-navbar.scrolled .nav-logo-img {
+            height: 50px;
+            filter: none;
+            /* Return to color on white bg */
         }
 
-        .main-nav a::after {
+        .nav-links-modern {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links-modern a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .premium-navbar.scrolled .nav-links-modern a {
+            color: var(--deep-blue);
+        }
+
+        .nav-links-modern a::after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 0;
+            /* Arabic RTL */
             width: 0;
-            height: 3px;
-            background: var(--gradient-primary);
+            height: 2px;
+            background: var(--primary-green);
             transition: width 0.3s ease;
         }
 
-        .main-nav a:hover::after {
+        .nav-links-modern a:hover::after {
             width: 100%;
         }
 
-        .lang-switch {
-            background: var(--gradient-secondary);
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-glass-nav {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-glass-nav:hover {
+            background: white;
+            color: var(--deep-blue);
+            transform: translateY(-2px);
+        }
+
+        .premium-navbar.scrolled .btn-glass-nav {
+            background: var(--gradient-secondary);
+            border-color: transparent;
+            color: white;
+        }
+
+        .premium-navbar.scrolled .btn-glass-nav:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .lang-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 0.9rem;
         }
 
-        .lang-switch:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+        .premium-navbar.scrolled .lang-toggle {
+            color: var(--deep-blue);
         }
 
-        .hero-section {
-            height: 100dvh;
-            /* يدعم الشاشات الحديثة بدل 100vh */
+        /* 2. Cinematic Hero */
+        .hero-section-modern {
+            height: 100vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            background: #000;
         }
 
-        /* سلايدر الصور */
-        .hero-slider {
+        .hero-slider-modern {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-        }
-
-        /* غطاء غامق لزيادة وضوح النص */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            inset: 0;
             z-index: 1;
         }
 
-        /* النص فوق الصور */
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-
-        .hero-bg-pattern {
+        .hero-slide-item {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px, 30px 30px;
-            animation: patternFloat 20s linear infinite;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 8s ease;
+            transform: scale(1.1);
         }
 
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        .hero-slide-item.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .hero-overlay-modern {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
             z-index: 2;
+        }
+
+        .hero-content-modern {
             position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 1000px;
+            padding: 0 20px;
+            margin-top: 60px;
+            /* Offset for navbar */
         }
 
-        .hero-text {
-            color: white;
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease 0.2s both;
         }
 
-        .hero-text h1 {
-            font-size: 3.5rem;
+        .hero-title-modern {
+            font-size: 4.5rem;
             font-weight: 800;
-            margin-bottom: 25px;
             line-height: 1.2;
-            animation: fadeInRight 1s ease;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
-        .hero-text .highlight {
-            background: var(--gradient-secondary);
+        .hero-title-modern span {
+            background: linear-gradient(135deg, #fff 0%, #a5d6a7 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-text p {
+        .hero-desc-modern {
             font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 50px;
             line-height: 1.8;
-            animation: fadeInRight 1s ease 0.2s both;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
-        .hero-buttons {
+        .hero-actions-modern {
             display: flex;
             gap: 20px;
-            animation: fadeInRight 1s ease 0.4s both;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.8s both;
         }
 
-        .btn-primary,
-        .btn-secondary {
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
+        /* Modern Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 10px;
-            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            text-decoration: none !important;
+            /* Force remove underline */
+            cursor: pointer;
         }
 
-        .btn-primary {
-            background: var(--gradient-secondary);
+        .scroll-indicator:hover {
             color: white;
-            box-shadow: var(--shadow-soft);
+            opacity: 1;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary-blue);
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .scroll-mouse {
+            width: 26px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
             position: relative;
         }
 
-        .hero-graphic {
-            width: 400px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-graphic::before {
+        .scroll-mouse::before {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: white;
             border-radius: 50%;
-            animation: rotate 20s linear infinite;
+            animation: scrollWheel 2s infinite;
         }
 
-        .floating-icons {
-            position: absolute;
-            font-size: 2rem;
-            color: rgba(255, 255, 255, 0.6);
-            animation: floatIcon 8s ease-in-out infinite;
+        @keyframes scrollWheel {
+            0% {
+                top: 6px;
+                opacity: 1;
+            }
+
+            100% {
+                top: 20px;
+                opacity: 0;
+            }
         }
 
-        .floating-icons:nth-child(1) {
-            top: 10%;
-            right: 20%;
-            animation-delay: 0s;
-        }
+        @media (max-width: 900px) {
+            .nav-container {
+                padding: 0 20px;
+            }
 
-        .floating-icons:nth-child(2) {
-            bottom: 15%;
-            left: 15%;
-            animation-delay: 2s;
-        }
+            .nav-links-modern {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
 
-        .floating-icons:nth-child(3) {
-            top: 50%;
-            right: 5%;
-            animation-delay: 4s;
+            .nav-links-modern.active {
+                display: flex;
+            }
+
+            .nav-links-modern a {
+                color: var(--deep-blue);
+                font-size: 1.5rem;
+            }
+
+            /* Mobile menu needed */
+            .hero-title-modern {
+                font-size: 2.5rem;
+            }
+
+            .hero-desc-modern {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+                cursor: pointer;
+                color: white;
+                font-size: 1.5rem;
+            }
+
+            .premium-navbar.scrolled .mobile-menu-btn {
+                color: var(--deep-blue);
+            }
         }
 
         /* Quick Stats */
@@ -1855,46 +1802,16 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Top Header -->
-    <div class="top-header">
-        <div class="top-header-content">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> +966 11 123 4567</span>
-                <span><i class="fas fa-envelope"></i> info@ssha.org.sa</span>
-                <span><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</span>
-            </div>
-            <div class="social-header">
-                <a href="#" title="تويتر"><i class="fab fa-twitter"></i></a>
-                <a href="#" title="لينكد إن"><i class="fab fa-linkedin"></i></a>
-                <a href="#" title="يوتيوب"><i class="fab fa-youtube"></i></a>
-                <a href="#" title="واتساب"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Header -->
-    <header class="main-header" id="mainHeader">
-        <div class="header-content">
-            <div class="header-spacer"></div>
-
-            <div class="main-logo-section">
-                <div class="ssha-logo">
-                    <img src="/assets/Images/logo.svg" alt="">
-                </div>
+    <!-- Premium Navbar -->
+    <nav class="premium-navbar" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo-wrapper">
+                <a href="#home">
+                    <img src="/assets/Images/logo.svg" alt="SSHA" class="nav-logo-img">
+                </a>
             </div>
 
-            <div class="commission-seal">
-                <div class="seal-logo">
-                    <img src="/assets/Images/SCHS-logo.svg" alt="" srcset="">
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-content-main">
-            <ul class="main-nav">
+            <ul class="nav-links-modern">
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#about">عن الجمعية</a></li>
                 <li><a href="branches.html">الفروع والنوادي</a></li>
@@ -1903,42 +1820,46 @@
                 <li><a href="resources.html">اللجان واللوائح</a></li>
                 <li><a href="#contact">تواصل معنا</a></li>
             </ul>
-            <a href="#membership" class="btn-membership" aria-label="العضويات">العضويات</a>
-            <a href="#" class="lang-switch">ENGLISH</a>
+
+            <div class="nav-actions">
+                <a href="#membership" class="btn-glass-nav" aria-label="العضويات">بوابة العضوية</a>
+                <a href="#" class="lang-toggle">English</a>
+                <button class="mobile-menu-btn"
+                    style="display:none; background:none; border:none; color:white; font-size:1.5rem;"><i
+                        class="fas fa-bars"></i></button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-        <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('/assets/Images/8.png');"></div>
-            <div class="hero-slide" style="background-image: url('/assets/Images/3.png');"></div>
-            <div class="hero-slide" style="background-image: url('/assets/Images/1.png');"></div>
-            <div class="hero-slide" style="background-image: url('/assets/Images/4.png');"></div>
-            <div class="hero-slide" style="background-image: url('/assets/Images/6.png');"></div>
-            <div class="hero-slide" style="background-image: url('/assets/Images/7.png');"></div>
-
+    <!-- Cinematic Hero Section -->
+    <section class="hero-section-modern" id="home">
+        <!-- Slider Background -->
+        <div class="hero-slider-modern">
+            <div class="hero-slide-item" style="background-image: url('/assets/Images/3.png');"></div>
+            <div class="hero-slide-item" style="background-image: url('/assets/Images/4.png');"></div>
         </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>نحو <span class="highlight">إدارة صحية</span> متطورة ومستدامة</h1>
-                <p>نقود التطوير والابتكار في مجال الإدارة الصحية لتحقيق رؤية المملكة 2030 وتعزيز جودة الخدمات الصحية
-                    المقدمة لجميع أفراد المجتمع</p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn-primary">
-                        <span>استكشف خدماتنا</span>
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
-                    <a href="#about" class="btn-secondary">
-                        <span>تعرف علينا</span>
-                        <i class="fas fa-arrow-down"></i>
-                    </a>
-                </div>
+
+        <div class="hero-overlay-modern"></div>
+
+        <div class="hero-content-modern">
+            <span class="hero-badge">الريادة في المستقبل الصحي</span>
+            <h1 class="hero-title-modern">
+                نحو <span>إدارة صحية</span><br> متطورة ومستدامة
+            </h1>
+            <p class="hero-desc-modern">
+                نقود التطوير والابتكار في مجال الإدارة الصحية لتحقيق رؤية المملكة 2030 وتعزيز جودة الخدمات الصحية
+                المقدمة لجميع أفراد المجتمع
+            </p>
+            <div class="hero-actions-modern">
+                <a href="#services" class="btn-primary" style="padding: 18px 45px; font-size:1.2rem;">استكشف خدماتنا</a>
+                <a href="#about" class="btn-glass-nav" style="padding: 18px 45px; font-size:1.2rem;">تعرف علينا</a>
             </div>
-
-
         </div>
+
+        <a href="#services" class="scroll-indicator" style="text-decoration:none;">
+            <div class="scroll-mouse"></div>
+            <span>استكشف خدماتنا</span>
+        </a>
     </section>
     <div class="svg-divider">
         <img src="/assets/Images/sadu.svg" alt="فاصل زخرفي">
@@ -2355,17 +2276,27 @@
             });
         });
 
-        // Header Scroll Effect
+        // Header Scroll Effect (Updated for Premium Navbar)
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('mainHeader');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+            const navbar = document.querySelector('.premium-navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 8px 40px rgba(0,0,0,0.12)';
+                navbar.classList.remove('scrolled');
             }
         });
+
+        // Hero Slider Logic
+        const slides = document.querySelectorAll('.hero-slide-item');
+        let currentSlide = 0;
+
+        if (slides.length > 0) {
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000); // Change slide every 5 seconds
+        }
 
         // Animated Statistics Counter
         const observerOptions = {
@@ -2622,7 +2553,27 @@
             });
         }
 
-        createMobileMenu();
+        // Mobile Menu Logic
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links-modern');
+
+        if (mobileBtn && navLinks) {
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const isOpen = navLinks.classList.contains('active');
+                mobileBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                mobileBtn.style.color = isOpen ? 'var(--deep-blue)' : '';
+            });
+
+            // Close menu when clicking links
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileBtn.style.color = '';
+                });
+            });
+        }
 
         // Enhanced Card Hover Effects
         document.querySelectorAll('.service-card, .news-card').forEach(card => {
@@ -2675,17 +2626,7 @@
 
         console.log('🏥 الجمعية السعودية للإدارة الصحية - تم تحميل الموقع بنجاح');
 
-        // Hero Slider Rotation
-        const slides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
 
-        function changeSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(changeSlide, 5000); // يغير الصورة كل 5 ثواني
 
     </script>
 </body>
