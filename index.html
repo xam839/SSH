@@ -1920,7 +1920,7 @@
         <div class="hero-overlay-modern"></div>
 
         <div class="hero-content-modern">
-            <span class="hero-badge">الريادة في المستقبل الصحي</span>
+
             <h1 class="hero-title-modern">
                 نحو <span>إدارة صحية</span><br> متطورة ومستدامة
             </h1>
@@ -1929,7 +1929,7 @@
                 المقدمة لجميع أفراد المجتمع
             </p>
             <div class="hero-actions-modern">
-                <a href="#services" class="btn-primary" style="padding: 18px 45px; font-size:1.2rem;">استكشف خدماتنا</a>
+
                 <a href="#about" class="btn-glass-nav" style="padding: 18px 45px; font-size:1.2rem;">تعرف علينا</a>
             </div>
         </div>
@@ -2290,7 +2290,7 @@
                             <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                             <div>
                                 <span>اتصل بنا</span>
-                                <div style="color: white; direction: ltr;">+966 11 123 4567</div>
+                                <div style="color: white; direction: ltr;">+966 555264649</div>
                             </div>
                         </li>
                         <li>
@@ -2304,7 +2304,7 @@
                             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
                                 <span>الموقع</span>
-                                <div style="color: white;">الرياض، طريق الملك فهد</div>
+                                <div style="color: white;">الرياض،الملز - شارع صلاح الدين </div>
                             </div>
                         </li>
                     </ul>
@@ -2369,10 +2369,40 @@
         let currentSlide = 0;
 
         if (slides.length > 0) {
+            // Ensure first slide is active and visible
+            slides[currentSlide].classList.add('active');
+            slides[currentSlide].style.zIndex = '2';
+
             setInterval(() => {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
+                const navSlide = (currentSlide + 1) % slides.length;
+
+                // Prepare next slide: put it on top but invisible initially (by class logic)
+                // We want next slide to fade IN over the current slide.
+                // Current slide is active (opacity 1).
+
+                // Set z-indexes
+                slides[navSlide].style.zIndex = '2'; // Incoming on top
+                slides[currentSlide].style.zIndex = '1'; // Current stays behind
+
+                // Start transition
+                slides[navSlide].classList.add('active'); // Fades in
+
+                // Wait for transition to complete before cleaning up old slide
+                const oldSlide = currentSlide;
+
+                setTimeout(() => {
+                    slides[oldSlide].classList.remove('active');
+                    slides[oldSlide].style.zIndex = '';
+                    // Keep next slide clean
+                    // slides[navSlide].style.zIndex = ''; // Optional: let it stay high until next turn? 
+                    // Better to reset z-index only when it becomes "old" next time, 
+                    // OR reset it now if we rely purely on DOM order?
+                    // No, we rely on opacity. If zIndex is removed, they fall back to DOM order.
+                    // If both are active/opacity 1, DOM order wins. 
+                    // So we should safe guard.
+                }, 1500); // Matches CSS transition duration
+
+                currentSlide = navSlide;
             }, 5000); // Change slide every 5 seconds
         }
 
