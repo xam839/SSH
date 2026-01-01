@@ -2393,14 +2393,7 @@
                 setTimeout(() => {
                     slides[oldSlide].classList.remove('active');
                     slides[oldSlide].style.zIndex = '';
-                    // Keep next slide clean
-                    // slides[navSlide].style.zIndex = ''; // Optional: let it stay high until next turn? 
-                    // Better to reset z-index only when it becomes "old" next time, 
-                    // OR reset it now if we rely purely on DOM order?
-                    // No, we rely on opacity. If zIndex is removed, they fall back to DOM order.
-                    // If both are active/opacity 1, DOM order wins. 
-                    // So we should safe guard.
-                }, 1500); // Matches CSS transition duration
+                }, 2000); // Wait longer than transition (1.5s) to ensure no black gap
 
                 currentSlide = navSlide;
             }, 5000); // Change slide every 5 seconds
